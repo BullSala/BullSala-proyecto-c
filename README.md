@@ -5,7 +5,7 @@
 
 Este proyecto en lenguaje C está preparado con:
 - Pruebas unitarias con `Check`
-- Cobertura de código con `lcov` y `gcovr` 
+- Cobertura de código con `lcov` y `gcovr`    
 - CI/CD con GitHub Actions
 - Entorno reproducible con Docker / DevContainer
 
