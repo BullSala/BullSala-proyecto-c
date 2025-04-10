@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Iinclude -fprofile-arcs -ftest-coverage
-LDFLAGS = -lgcov -lcheck
+LDFLAGS = -lgcov -lcheck -lsubunit -lm
 SRC = src/main.c src/funciones.c
 TEST = test/test_funciones.c
 
