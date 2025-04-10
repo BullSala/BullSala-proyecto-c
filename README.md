@@ -10,7 +10,7 @@ Este proyecto en lenguaje C está preparado con:
 - Entorno reproducible con Docker / DevContainer
 
 
-## Comandos útiles
+## Comandos útiles . 
 
 ```bash
 make test         # Ejecuta pruebas
