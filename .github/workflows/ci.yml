@@ -26,8 +26,8 @@ jobs:
           make coverage
           make gcovr-html
 
-      - name: Upload HTML report
-        uses: actions/upload-artifact@a61efb7d1b42e7f9108db44289f5b8cb5d53a918
-        with:
-          name: cobertura
-          path: coverage_html/
+      # - name: Upload HTML report
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: cobertura
+      #     path: coverage_html/
