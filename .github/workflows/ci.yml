@@ -9,48 +9,33 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ubuntu:22.04
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Install dependencies
         run: |
-          echo ">> Forzando zona horaria no interactiva"
-            export DEBIAN_FRONTEND=noninteractive
+          export DEBIAN_FRONTEND=noninteractive
           ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
           apt update
           apt install -y tzdata
           dpkg-reconfigure -f noninteractive tzdata
-          echo ">> Instalando herramientas..."
           apt install -y build-essential check lcov gcovr make git curl
 
       - name: Compile project
-        run: |
-          echo ">> Building project"
-          make
+        run: make
 
       - name: Run unit tests
-        run: |
-          echo ">> Running tests"
-          make test
+        run: make test
 
       - name: Generate coverage
         run: |
-          echo ">> Generating .gcda/.gcno"
           make coverage
-          echo ">> Generating HTML report"
           make gcovr-html
 
-      - name: Upload coverage to Codecov
+      - name: Subir cobertura a Codecov
         uses: codecov/codecov-action@v3
         with:
-          files: coverage.info
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage.info
           flags: unittests
-          name: codecov-coverage
-
-      # - name: Upload HTML report
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: cobertura
-      #     path: coverage_html/
