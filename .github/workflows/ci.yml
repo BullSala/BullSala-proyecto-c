@@ -16,9 +16,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo ">> Updating apt..."
+          echo ">> Forzando zona horaria no interactiva"
+            export DEBIAN_FRONTEND=noninteractive
+          ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
           apt update
-          echo ">> Installing tools..."
+          apt install -y tzdata
+          dpkg-reconfigure -f noninteractive tzdata
+          echo ">> Instalando herramientas..."
           apt install -y build-essential check lcov gcovr make git curl
 
       - name: Compile project
