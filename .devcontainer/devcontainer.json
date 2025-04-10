@@ -1,0 +1,11 @@
+{
+  "name": "Entorno C DevContainer",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [],
+  "remoteUser": "devuser"
+}

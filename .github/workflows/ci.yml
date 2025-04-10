@@ -1,0 +1,33 @@
+name: CI C Coverage
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:22.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          apt update
+          apt install -y build-essential check lcov gcovr make git curl
+
+      - name: Run tests
+        run: make test
+
+      - name: Generate coverage
+        run: |
+          make coverage
+          make gcovr-html
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v3
+        with:
+          name: cobertura
+          path: coverage_html/
