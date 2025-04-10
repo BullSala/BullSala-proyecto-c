@@ -42,6 +42,13 @@ jobs:
           echo ">> Generating HTML report"
           make gcovr-html
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage.info
+          flags: unittests
+          name: codecov-coverage
+
       # - name: Upload HTML report
       #   uses: actions/upload-artifact@v3
       #   with:
