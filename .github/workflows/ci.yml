@@ -9,21 +9,33 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ubuntu:22.04
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Install dependencies
         run: |
+          echo ">> Updating apt..."
           apt update
+          echo ">> Installing tools..."
           apt install -y build-essential check lcov gcovr make git curl
 
-      - name: Run tests
-        run: make test
+      - name: Compile project
+        run: |
+          echo ">> Building project"
+          make
+
+      - name: Run unit tests
+        run: |
+          echo ">> Running tests"
+          make test
 
       - name: Generate coverage
         run: |
+          echo ">> Generating .gcda/.gcno"
           make coverage
+          echo ">> Generating HTML report"
           make gcovr-html
 
       # - name: Upload HTML report
