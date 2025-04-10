@@ -7,6 +7,7 @@ TEST = test/test_funciones.c
 all: main
 
 main: $(SRC)
+	mkdir -p bin	
 	$(CC) $(CFLAGS) -o bin/main $(SRC)
 
 test: $(TEST) src/funciones.c
@@ -30,3 +31,5 @@ gcovr-xml:
 clean:
 	rm -f bin/* *.gcno *.gcda *.gcov *.info coverage.* *.txt *.json *.xml
 	rm -rf coverage_html
+
+.PHONY: all main test coverage coverage-only gcovr-html gcovr-json gcovr-xml clean
