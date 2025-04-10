@@ -8,7 +8,7 @@ Este proyecto en lenguaje C está preparado con:
 - Cobertura de código con `lcov` y `gcovr`
 - CI/CD con GitHub Actions
 - Entorno reproducible con Docker / DevContainer
-- 
+-    
 ## Comandos útiles
 
 ```bash
