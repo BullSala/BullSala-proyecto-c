@@ -33,9 +33,9 @@ jobs:
           make coverage
           make gcovr-html
 
-      - name: Subir cobertura a Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage.info
-          flags: unittests
+      - name: Upload to Codecov manually
+        run: |
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov -t ${{ secrets.CODECOV_TOKEN }} -f coverage.info -F unittests
+          
