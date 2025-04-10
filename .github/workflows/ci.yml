@@ -27,7 +27,7 @@ jobs:
           make gcovr-html
 
       - name: Upload HTML report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: cobertura
           path: coverage_html/
